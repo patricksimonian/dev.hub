@@ -6,7 +6,7 @@ module.exports = {
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     renderDocumentationInSite: false,
     "about": "about.md",
-    "bannerLogo": "logo.png",
+    "bannerLogo": "logo.svg",
     "favicon": "font.ico",
     ...rootConfig,
   },
@@ -20,7 +20,15 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/config`,
+      },
+    },
     `gatsby-transformer-sharp`,
+    `gatsby-transformer-json`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,

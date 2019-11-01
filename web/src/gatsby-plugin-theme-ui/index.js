@@ -1,4 +1,4 @@
-import configTheme from '../../config/theme.json';
+import configTheme from '../../config/theme/index.json';
 
 const SPACING_FACTOR = 4;
 const FONT_SIZE_FACTOR = 4;

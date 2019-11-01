@@ -1,30 +1,48 @@
 import { Link } from "gatsby";
 import PropTypes from "prop-types";
 import React from "react";
-import { Box } from 'rebass';
+import { Box, Flex, Image, Text } from 'rebass';
 import styled from '@emotion/styled';
 import {border} from 'styled-system';
+
+// logos 
+import logo from '../images/logo.svg';
+import logoSmall from '../images/logo-mobile.svg';
+import { BREAKPOINTS } from "../gatsby-plugin-theme-ui";
+
 const Container = styled(Box)`
   ${border};
 `;
+
+const LogoBig = styled(Image)`
+  display: none;
+  ${BREAKPOINTS.sm} {
+    display: block;
+  }
+`;
+
+const LogoSmall = styled(Image)`
+  display: block;
+  ${BREAKPOINTS.sm} {
+    display: none;
+  }
+`;
+
 
 const Header = ({ siteTitle }) => (
   <Container as="header"
     bg="fgMain"
     borderBottom="4px solid"
     borderBottomColor="fgAccent"
-    py={4}
-    px={5}
-    mb={5}
+    px={[12, 7, 10]}
+    py={3}
   >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
+    <Flex
+    alignItems="center"
     >
-      <h1 style={{ margin: 0 }}>
+      <LogoBig sx={{width: [ '175px', '125px' ]}} src={logo} alt={siteTitle} mb={1} />
+      <LogoSmall sx={{width: [ '75px' ]}} src={logoSmall} alt={siteTitle} />
+      <Text as="h1" ml={4} mb={0}>
         <Link
           to="/"
           style={{
@@ -34,8 +52,8 @@ const Header = ({ siteTitle }) => (
         >
           {siteTitle}
         </Link>
-      </h1>
-    </div>
+      </Text>
+    </Flex>
   </Container>
 )
 

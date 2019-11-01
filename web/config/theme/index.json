@@ -1,8 +1,8 @@
 {
   "colors": {
-    "fgMain": "#035",
+    "fgMain": "#036",
     "fgSecondary": "lightblue",
-    "fgAccent": "yellow",
+    "fgAccent": "#FCBA19",
     "bgMain": "white",
     "bgSecondary": "grey",
     "bgAccent": "grey",
