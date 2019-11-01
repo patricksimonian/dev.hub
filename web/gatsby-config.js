@@ -1,4 +1,4 @@
-import rootConfig from './config/index.json';
+const rootConfig = require('./config/index.json');
 
 module.exports = {
   siteMetadata: {
@@ -12,6 +12,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    'gatsby-plugin-theme-ui',
     {
       resolve: `gatsby-source-filesystem`,
       options: {

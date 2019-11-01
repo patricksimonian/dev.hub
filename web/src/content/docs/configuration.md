@@ -18,4 +18,3 @@ siteMetadata configuration
   - `description`: `<string>` **Gatsby MD File**, this is the app generic description. It is a markdown file and should be located within `/src/content/application`. **The name of this markdown file is what should be denoted here.** 
   - `about`: `<string>` **Gatsby MD File**, this is the about page found at `/about` on the website. It is generated from a markdown file that should be located within `/src/content/application/`. **The name of this markdown file is what should be denoted here.**
   - `bannerLogo`: `<string>` This is an url to a logo that will be used inside of the header, if this is left empty the file called `logo.png` found within `/src/images` will be leveraged instead.
-}

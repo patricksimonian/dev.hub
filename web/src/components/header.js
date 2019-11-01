@@ -1,13 +1,21 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
-import React from "react"
+import { Link } from "gatsby";
+import PropTypes from "prop-types";
+import React from "react";
+import { Box } from 'rebass';
+import styled from '@emotion/styled';
+import {border} from 'styled-system';
+const Container = styled(Box)`
+  ${border};
+`;
 
 const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
+  <Container as="header"
+    bg="fgMain"
+    borderBottom="4px solid"
+    borderBottomColor="fgAccent"
+    py={4}
+    px={5}
+    mb={5}
   >
     <div
       style={{
@@ -28,7 +36,7 @@ const Header = ({ siteTitle }) => (
         </Link>
       </h1>
     </div>
-  </header>
+  </Container>
 )
 
 Header.propTypes = {

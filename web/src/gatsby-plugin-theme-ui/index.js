@@ -1,4 +1,4 @@
-import configTheme from '../config/theme.json';
+import configTheme from '../../config/theme.json';
 
 const SPACING_FACTOR = 4;
 const FONT_SIZE_FACTOR = 4;
@@ -70,7 +70,10 @@ export const FONT_SIZES = getSpacingFactors(FONT_SIZE_FACTOR, 20);
 
 export const COLORS = {
   ...configTheme.colors,
-  ...configTheme.objects.map(obj => obj.color),
+  ...Object.keys(configTheme.objects).reduce((colors, obj) => {
+    colors[obj] = configTheme.objects[obj].color;
+    return colors;
+  }, {}),
   darkgrey: '#555555',
   lightgrey: '#e5e5e5',
   midgrey: '#979797',
@@ -79,7 +82,7 @@ export const COLORS = {
   white: '#ffffff',
   transparent: 'transparent',
 };
-
+console.log(COLORS)
 export const Z_SPACING = getSpacingFactors(100, 10, '');
 
 export const Z_SPACES = {
