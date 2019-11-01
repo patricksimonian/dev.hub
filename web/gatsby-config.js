@@ -1,8 +1,14 @@
+import rootConfig from './config/index.json';
+
 module.exports = {
   siteMetadata: {
     title: `Devhub`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    renderDocumentationInSite: false,
+    "about": "about.md",
+    "bannerLogo": "logo.png",
+    "favicon": "font.ico",
+    ...rootConfig,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

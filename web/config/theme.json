@@ -1,0 +1,37 @@
+{
+  "colors": {
+    "fgMain": "blue",
+    "fgSecondary": "lightblue",
+    "fgAccent": "yellow",
+    "bgMain": "white",
+    "bgSecondary": "grey",
+    "bgAccent": "grey",
+    "primary": "#036",
+    "secondary": "#dfa",
+    "tertiary": "#ff83ad",
+    "disabled": "darkgrey"
+  },
+  "objects": {
+    "journey": {
+      "color": "#3828dd"
+    },
+    "topic": {
+      "color": "#3782a4"
+    },
+    "documentation": {
+      "color": "#881ade"
+    },
+    "component": {
+      "color": "#83761d"
+    },
+    "repository": {
+      "color": "#fe889a"
+    },
+    "event": {
+      "color": "#8892aa"
+    },
+    "tool": {
+      "color": "#8817a3"
+    }
+  }
+}
