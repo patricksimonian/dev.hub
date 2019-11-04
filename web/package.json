@@ -28,7 +28,8 @@
     "rebass": "^4.0.7",
     "storybook": "^5.1.11",
     "styled-system": "^5.1.2",
-    "theme-ui": "^0.2.46"
+    "theme-ui": "^0.2.46",
+    "valid-url": "^1.0.9"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",

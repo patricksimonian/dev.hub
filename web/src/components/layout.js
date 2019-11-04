@@ -24,10 +24,10 @@ const Layout = ({ children }) => {
       }
     }
   `)
-
+  const {site: {fields: {title, bannerLogo, bannerLogoSmall}}} = data;
   return (
     <>
-      <Header siteTitle={data.site.fields.title} logo={{big: bannerLogo, small: bannerLogoSmall}}/>
+      <Header siteTitle={title} logo={{big: bannerLogo, small: bannerLogoSmall}}/>
       <div
         style={{
           margin: `0 auto`,

@@ -3,6 +3,7 @@
   "title": "ClimbingHub",
   "description": "One place to join gov and people in gov",
   "about": "about.md",
-  "bannerLogo": "logo.png",
+  "bannerLogo": "logo.svg",
+  "bannerLogoSmall": "logo-mobile.svg",
   "favicon": "font.ico"
 }
