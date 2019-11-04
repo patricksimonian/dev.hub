@@ -9,7 +9,7 @@ const FONT_SIZE_FACTOR = 4;
  * @param {Number} maxMultiple amount of multiples
  * @returns {Array} ['2px', '4px', '8px' ] etc
  */
-const getSpacingFactors = (spacingFactor, maxMultiple = 20, unit = 'px') => {
+const getSpacingFactors = (spacingFactor, maxMultiple = 50, unit = 'px') => {
   const spacingFactors = [];
 
   for (let i = 1; i <= maxMultiple; i++) {
@@ -65,7 +65,7 @@ export const CUSTOM_BREAKPOINTS = {
   '1060': mediaQuery(1060),
 };
 
-export const SPACING = getSpacingFactors(SPACING_FACTOR, 30);
+export const SPACING = getSpacingFactors(SPACING_FACTOR, 50);
 export const FONT_SIZES = getSpacingFactors(FONT_SIZE_FACTOR, 20);
 
 export const COLORS = {
@@ -82,7 +82,7 @@ export const COLORS = {
   white: '#ffffff',
   transparent: 'transparent',
 };
-console.log(COLORS)
+
 export const Z_SPACING = getSpacingFactors(100, 10, '');
 
 export const Z_SPACES = {
@@ -92,8 +92,9 @@ export const Z_SPACES = {
   backdrop: Z_SPACING[2],
 };
 
+
 export default {
-  breakpoints: Object.keys(BREAKPOINT_VALUES).map(k => BREAKPOINT_VALUES[k]),
+  breakpoints: Object.keys(BREAKPOINT_VALUES).slice(1).map(k => `${BREAKPOINT_VALUES[k]}px`),
   mediaQueries: {
     ...BREAKPOINTS,
     ...CUSTOM_BREAKPOINTS,
