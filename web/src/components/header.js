@@ -48,12 +48,13 @@ const Header = ({ siteTitle, logo: {big, small} }) => {
   return (
     <Container as="header"
       bg="fgMain"
-      borderBottom="4px solid"
+      borderBottom="3px solid"
       borderBottomColor="fgAccent"
       position="fixed"
       width={1}
       px={[7, 7, 10]}
       py={3}
+      height={75}
       top={0}
     >
       <Flex
@@ -63,13 +64,13 @@ const Header = ({ siteTitle, logo: {big, small} }) => {
          {
            small && big && (
               <React.Fragment>
-                <LogoBig sx={{width: [ '175px', '150px', '175px' ]}} src={bigLogo} alt={siteTitle} mb={1} />
-                <LogoSmall sx={{width: [ '75px' ]}} src={smallLogo} alt={siteTitle} />
+                <LogoBig sx={{maxHeight: '50px', width: [ '165px', '150px', '165px' ]}} src={bigLogo} alt={siteTitle} mb={1} />
+                <LogoSmall sx={{maxHeight: '50px', width: [ '75px' ]}} src={smallLogo} alt={siteTitle} />
               </React.Fragment>
             )
           }
-        { big && !small && <Image sx={{width: ['175px', '150px', '175px']}} src={bigLogo} alt={siteTitle} /> }
-        <Text as="h1" ml={4} mb={0} sx={{fontSize: [7, 7, 10]}}>
+        { big && !small && <Image sx={{maxHeight: '50px', width: ['165px', '150px', '165px']}} src={bigLogo} alt={siteTitle} /> }
+        <Text as="h1" ml={4} mb={0} sx={{fontSize: [6, 6, 8]}}>
           <Link
             to="/"
             style={{
