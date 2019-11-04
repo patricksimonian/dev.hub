@@ -1,4 +1,4 @@
-import { Link } from "gatsby";
+import { Link, StaticQuery, graphql } from "gatsby";
 import PropTypes from "prop-types";
 import React from "react";
 import { Box, Flex, Image, Text } from 'rebass';
@@ -29,7 +29,7 @@ const LogoSmall = styled(Image)`
 `;
 
 
-const Header = ({ siteTitle }) => (
+const Header = ({ siteTitle, logo: {big, small} }) => (
   <Container as="header"
     bg="fgMain"
     borderBottom="4px solid"
@@ -40,8 +40,16 @@ const Header = ({ siteTitle }) => (
     <Flex
     alignItems="center"
     >
-      <LogoBig sx={{width: [ '175px', '125px' ]}} src={logo} alt={siteTitle} mb={1} />
-      <LogoSmall sx={{width: [ '75px' ]}} src={logoSmall} alt={siteTitle} />
+       
+       {
+         small && big && (
+            <React.Fragment>
+              <LogoBig sx={{width: [ '175px', '125px' ]}} src={logo} alt={siteTitle} mb={1} />
+              <LogoSmall sx={{width: [ '75px' ]}} src={logoSmall} alt={siteTitle} />
+            </React.Fragment>
+          )
+        }
+      { big && !small && <Image sx={{width: ['175px', '75px', '125px', '175px']}} src={logo} alt={siteTitle} /> }
       <Text as="h1" ml={4} mb={0}>
         <Link
           to="/"
@@ -59,10 +67,11 @@ const Header = ({ siteTitle }) => (
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
+  logo: PropTypes.shape({big: PropTypes.string, small: PropTypes.string})
 }
 
 Header.defaultProps = {
   siteTitle: ``,
 }
 
-export default Header
+export default React.memo(Header)

@@ -18,6 +18,8 @@ const Layout = ({ children }) => {
       site {
         fields {
           title
+          bannerLogo
+          bannerLogoSmall
         }
       }
     }
@@ -25,7 +27,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header siteTitle={data.site.fields.title} />
+      <Header siteTitle={data.site.fields.title} logo={{big: bannerLogo, small: bannerLogoSmall}}/>
       <div
         style={{
           margin: `0 auto`,

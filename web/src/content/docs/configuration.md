@@ -17,4 +17,19 @@ siteMetadata configuration
   - `title`: `<string>`, this is the app title, it will show up in the header as well as the homepage masthead
   - `description`: `<string>` **Gatsby MD File**, this is the app generic description. It is a markdown file and should be located within `/src/content/application`. **The name of this markdown file is what should be denoted here.** 
   - `about`: `<string>` **Gatsby MD File**, this is the about page found at `/about` on the website. It is generated from a markdown file that should be located within `/src/content/application/`. **The name of this markdown file is what should be denoted here.**
-  - `bannerLogo`: `<string>` This is an url to a logo that will be used inside of the header, if this is left empty the file called `logo.png` found within `/src/images` will be leveraged instead.
+  - `bannerLogo`: `<string>` This is either a valid url to a logo or file that has been dropped into `/src/images`
+  - `bannerLogoSmall`: `<string>` This is a small variant of your logo (optional) that will be used on small screen sizes. The image will be scaled too __75px__ wide. If no small logo is put, the large logo will be used.
+
+## Example Configuration
+
+> /config/index.json
+```
+{
+  "renderDocumentationInSite": true,
+  "title": "ClimbingHub",
+  "description": "One place to join gov and people in gov",
+  "about": "about.md",
+  "bannerLogo": "logo.png",
+  "favicon": "font.ico"
+}
+```

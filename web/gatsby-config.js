@@ -7,6 +7,7 @@ module.exports = {
     renderDocumentationInSite: false,
     "about": "about.md",
     "bannerLogo": "logo.svg",
+    "bannerLogoSmall": null,
     "favicon": "font.ico",
     ...rootConfig,
   },
