@@ -1,0 +1,27 @@
+{
+  "name": "devhub-api",
+  "version": "1.0.0",
+  "description": "Devhub's api to modify and push content",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/patricksimonian/dev.hub.git"
+  },
+  "keywords": [
+    "Devhub"
+  ],
+  "author": "Patrick Simonian",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/patricksimonian/dev.hub/issues"
+  },
+  "homepage": "https://github.com/patricksimonian/dev.hub#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  }
+}
