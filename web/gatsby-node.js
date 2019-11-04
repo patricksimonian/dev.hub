@@ -25,3 +25,20 @@ exports.onCreateNode = ({ node, actions, getNode, getNodes }) => {
     createParentChildLink({parent: parentNode, child: node});
   }
 }
+
+exports.onCreatePage = ({ page, actions, getNode }) => {
+  const { createPage, deletePage } = actions
+  const node = getNode('Site');
+
+
+  if(page.path === '/about/') {
+    deletePage(page)
+  
+    createPage({
+      ...page,
+      context: {
+        file: node.fields.about
+      }
+    })
+  } 
+}
