@@ -1,0 +1,4 @@
+{
+  "validRoles": ["admin"],
+  "cors": ["http://localhost:8000"]
+}
