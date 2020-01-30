@@ -5,12 +5,11 @@
  */
 
 // You can delete this file if you're not using it
-const {INVALID_BANNER_LOGO, VALIDATING_CONFIGURATIONS, CONFIGURATIONS_VALID, MERGING_CONFIGURATIONS} = require('./gatsby/strings');
-
+const {INVALID_BANNER_LOGO, VALIDATING_CONFIGURATIONS, CONFIGURATIONS_VALID, MERGING_CONFIGURATIONS, logVerbose} = require('./gatsby/prompter');
 exports.onCreateNode = ({ node, actions, getNode, getNodes }) => {
   const {createParentChildLink, createNodeField} = actions;
   if(node.internal.type === 'ConfigJson') {
-    console.log(MERGING_CONFIGURATIONS);
+    logVerbose(MERGING_CONFIGURATIONS);
     const parentNode = getNode('Site');
     const {siteMetadata} = parentNode;
     // create node fields for all config items merge siteMetadata with nodes from configJson
@@ -51,10 +50,12 @@ exports.onPostBootstrap = ({getNode}) => {
   // validate image paths
   const relativePathCheck = /\.\.?\//g;
   const imageExtensionCheck = /(jpeg|gif|png|jpg|svg)$/;
-  console.log(VALIDATING_CONFIGURATIONS);
+
+  logVerbose(VALIDATING_CONFIGURATIONS);
+
   if(relativePathCheck.test(node.fields.bannerLogo) || relativePathCheck.test(node.fields.bannerLogoSmall) ||
   !imageExtensionCheck.test(node.fields.bannerLogo) || !imageExtensionCheck.test(node.fields.bannerLogoSmall)) {
     throw Error(INVALID_BANNER_LOGO)
   }
-  console.log(CONFIGURATIONS_VALID);
+  logVerbose(CONFIGURATIONS_VALID);
 }

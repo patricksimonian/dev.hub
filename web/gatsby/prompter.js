@@ -17,15 +17,45 @@ Created by Patrick Simonian
 */
 
 // these are strings meant to be read in stdout. Typically for error messaging
+
+const  LOG_LEVELS = {
+  VERBOSE: 5,
+  LOG: 0,
+}
+
+/**
+ * wrapper around console.log that will only log if the LOG LEVEL env variable is set appropriately
+ * @param {String} msg 
+ * @param {Number} level defaults to LOG_LEVEL = LOG
+ */
+const log = (msg, level = LOG_LEVELS.LOG) => {
+  if(process.env.GATSBY_LOG_LEVEL >= level) console.log(msg);
+};
+
+/**
+ * wrapper around log() with LOG_LEVEL = VERBOSE
+ * @param {String} msg 
+ */
+const logVerbose = msg => log(msg, LOG_LEVELS.VERBOSE);
+
+/**
+ * Concats the Dev.Hub prompt to a message
+ * @param {String} msg 
+ * @returns {String} the devhub prompt plus the message
+ */
 const prompt = msg => `==Dev.Hub==> ${msg}`;
+
 const INVALID_BANNER_LOGO = prompt('Invalid Banner Logo, the value must be a valid image file (logo.png)'); 
 const VALIDATING_CONFIGURATIONS = prompt('Validating configurations...');
 const CONFIGURATIONS_VALID = prompt('Configurations valid!');
-const MERGING_CONFIGURATIONS = prompt('Merging default configurations with index.json (this will be available on the node: Site.fields[config])');
+const MERGING_CONFIGURATIONS = prompt('Merging default configurations with "<root>/config/index.json" (this will be available on the node: Site.fields[config])');
 
 module.exports = {
   INVALID_BANNER_LOGO,
   VALIDATING_CONFIGURATIONS,
   CONFIGURATIONS_VALID,
   MERGING_CONFIGURATIONS,
+  log,
+  prompt,
+  logVerbose
 }
