@@ -32,7 +32,7 @@ const LogoSmall = styled(Image)`
 const Header = ({ siteTitle, logo: {big, small} }) => {
   let bigLogo = '';
   let smallLogo = '';
-  
+
   if(validUrl.isWebUri(big)) {
     bigLogo = big;
   } else {
@@ -45,12 +45,14 @@ const Header = ({ siteTitle, logo: {big, small} }) => {
       smallLogo = require(`../images/${small}`)
     }
   }
+
   return (
     <Container as="header"
       bg="fgMain"
       borderBottom="3px solid"
       borderBottomColor="fgAccent"
       position="fixed"
+      data-testid="layout.header"
       width={1}
       px={[7, 7, 10]}
       py={3}

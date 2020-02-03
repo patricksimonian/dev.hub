@@ -5,12 +5,11 @@
  */
 
 // You can delete this file if you're not using it
-const {INVALID_BANNER_LOGO, VALIDATING_CONFIGURATIONS, CONFIGURATIONS_VALID, MERGING_CONFIGURATIONS} = require('./gatsby/strings');
-
-exports.onCreateNode = ({ node, actions, getNode, getNodes }) => {
+const {INVALID_BANNER_LOGO, VALIDATING_CONFIGURATIONS, CONFIGURATIONS_VALID, MERGING_CONFIGURATIONS, logVerbose} = require('./gatsby/prompter');
+exports.onCreateNode = async ({ node, actions, getNode }) => {
   const {createParentChildLink, createNodeField} = actions;
   if(node.internal.type === 'ConfigJson') {
-    console.log(MERGING_CONFIGURATIONS);
+    logVerbose(MERGING_CONFIGURATIONS);
     const parentNode = getNode('Site');
     const {siteMetadata} = parentNode;
     // create node fields for all config items merge siteMetadata with nodes from configJson
@@ -19,10 +18,11 @@ exports.onCreateNode = ({ node, actions, getNode, getNodes }) => {
     // the theme config json file
     const {colors, children, parent, internal, objects, ...config} = node;
     const globalConfig = {...siteMetadata, ...config};
-    Object.keys(globalConfig).forEach(name => {
+    const promises = Object.keys(globalConfig).map(async name => {
       const value = globalConfig[name];
-      createNodeField({node: parentNode, name, value});
+      return createNodeField({node: parentNode, name, value});
     });
+    await Promise.all(promises);
     createParentChildLink({parent: parentNode, child: node});
   }
 }
@@ -51,10 +51,12 @@ exports.onPostBootstrap = ({getNode}) => {
   // validate image paths
   const relativePathCheck = /\.\.?\//g;
   const imageExtensionCheck = /(jpeg|gif|png|jpg|svg)$/;
-  console.log(VALIDATING_CONFIGURATIONS);
+
+  logVerbose(VALIDATING_CONFIGURATIONS);
+
   if(relativePathCheck.test(node.fields.bannerLogo) || relativePathCheck.test(node.fields.bannerLogoSmall) ||
   !imageExtensionCheck.test(node.fields.bannerLogo) || !imageExtensionCheck.test(node.fields.bannerLogoSmall)) {
     throw Error(INVALID_BANNER_LOGO)
   }
-  console.log(CONFIGURATIONS_VALID);
+  logVerbose(CONFIGURATIONS_VALID);
 }
