@@ -18,6 +18,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: cd web && npm install
-    - run: npm test
+    - run: cd web && npm test
       env:
         CI: true
