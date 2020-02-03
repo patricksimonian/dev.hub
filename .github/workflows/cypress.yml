@@ -6,10 +6,24 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: web/node_modules
+          key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-build-${{ env.cache-name }}-
+            ${{ runner.OS }}-build-
+            ${{ runner.OS }}-
+      - uses: bahmutov/npm-install@v1
+        with:
+          working-directory: web
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       - name: Cypress run
-        uses: cypress-io/github-action@v1
+        uses: patricksimonian/github-action@6dc0f8790dccace7167b12f9aaa0e28b7dc81c7
         with:
           start: npm start
-          working-directory: web/cypress
+          wait-on: 'http://localhost:8000'
+          wait-on-timeout: 120
+          working-directory: web
