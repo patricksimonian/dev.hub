@@ -6,7 +6,7 @@
 
 // You can delete this file if you're not using it
 const {INVALID_BANNER_LOGO, VALIDATING_CONFIGURATIONS, CONFIGURATIONS_VALID, MERGING_CONFIGURATIONS, logVerbose} = require('./gatsby/prompter');
-exports.onCreateNode = ({ node, actions, getNode, getNodes }) => {
+exports.onCreateNode = async ({ node, actions, getNode }) => {
   const {createParentChildLink, createNodeField} = actions;
   if(node.internal.type === 'ConfigJson') {
     logVerbose(MERGING_CONFIGURATIONS);
@@ -18,10 +18,11 @@ exports.onCreateNode = ({ node, actions, getNode, getNodes }) => {
     // the theme config json file
     const {colors, children, parent, internal, objects, ...config} = node;
     const globalConfig = {...siteMetadata, ...config};
-    Object.keys(globalConfig).forEach(name => {
+    const promises = Object.keys(globalConfig).map(async name => {
       const value = globalConfig[name];
-      createNodeField({node: parentNode, name, value});
+      return createNodeField({node: parentNode, name, value});
     });
+    await Promise.all(promises);
     createParentChildLink({parent: parentNode, child: node});
   }
 }
