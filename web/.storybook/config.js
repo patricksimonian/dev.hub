@@ -1,9 +1,9 @@
 import React from 'react';
 import { configure, addParameters, addDecorator } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
+
 import { action } from "@storybook/addon-actions"
-import storybookTheme from '../stories/theme';
-import { ThemeProvider } from 'styled-components';
+
+import { ThemeProvider } from 'emotion-theming'
 import theme from '../config/theme'
 
 // automatically import all files ending in *.stories.js
@@ -37,8 +37,6 @@ window.___navigate = pathname => {
   action("NavigateTo:")(pathname)
 }
 
-addDecorator(withInfo); 
-addParameters({ options: { theme: storybookTheme } });
 
 function loadStories() {
   req.keys().forEach(filename => req(filename));
